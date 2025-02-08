@@ -7,8 +7,11 @@ from email.mime.application import MIMEApplication
 import os
 import json
 
+#Данные EMAIL
+
+
 # Задайте токен вашего бота
-bot_token = '7229675025:AAFuDM5dbfuhYv_8o3NPmnvgZnibiHD8Zrc'
+bot_token = ''
 bot = telebot.TeleBot(bot_token)
 
 #GLOBAL VAR
@@ -21,19 +24,19 @@ global name_file_allocation_12
 global name_file_allocation_15
 global name_file_promo
 global name_file_sc
-global name_file_honor_logo
+global name_file_logo
 global name_file_user_ids
 
 #Название файлов
 name_file_allocation_12 = 'Allocation12.xlsx'
 name_file_allocation_15 = 'Allocation15.xlsx'
-name_file_sc = 'HONOR_service.xlsx'
+name_file_sc = 'service.xlsx'
 name_file_promo12 = 'Promoplan12%.xlsx'
 name_file_promo15 = 'Promoplan15%.xlsx'
 name_file_promo15fsm = 'Promoplan15%FSM.xlsx'
 
 #Дополнение
-name_file_honor_logo = 'logo.png'
+name_file_logo = 'logo.png'
 name_file_user_ids = 'user_ids.txt'
 name_file_database = 'database.json'
 
@@ -46,7 +49,7 @@ path_name_file_promo12 = os.path.join(dir_files, name_file_promo12)
 path_name_file_promo15 = os.path.join(dir_files, name_file_promo15)
 path_name_file_promo15fsm = os.path.join(dir_files, name_file_promo15fsm)
 
-path_name_file_honor_logo = os.path.join(dir_images, name_file_honor_logo)
+path_name_file_logo = os.path.join(dir_images, name_file_logo)
 path_name_file_user_ids = os.path.join(current_directory, name_file_user_ids)
 path_name_file_database = os.path.join(current_directory, name_file_database)
 
@@ -85,11 +88,11 @@ def menu(message, phoneUser):
     keyboard = types.InlineKeyboardMarkup()
     button1 = types.InlineKeyboardButton(text='\U0001F4C4 Получить файл аллокации', callback_data=f'allocation|{phoneUser}')
     button2 = types.InlineKeyboardButton(text='\U0001F5D2 Получить файл промо', callback_data=f'promo|{phoneUser}')
-    button3 = types.InlineKeyboardButton(text='\U0001F6E0 Получить список АСЦ HONOR', callback_data=f'sc|{phoneUser}')
+    button3 = types.InlineKeyboardButton(text='\U0001F6E0 Получить список АСЦ', callback_data=f'sc|{phoneUser}')
     keyboard.row(button1)
     keyboard.row(button2)
     keyboard.row(button3)
-    photo = open(path_name_file_honor_logo, 'rb')
+    photo = open(path_name_file_logo, 'rb')
     caption = f'{nameUser}, выберите действие'
     bot.send_photo(message.chat.id, photo=photo, caption=caption, reply_markup=keyboard)
 
@@ -261,8 +264,8 @@ def handle_sendmail(call, phoneUser, nameDoc):
     # Установка соединения с сервером
     smtp_server = 'smtp.yandex.ru'
     smtp_port = 25
-    username = 'aleksandrhihonor@yandex.ru'
-    password = 'txxjzlonbgpsvupn'
+    username = ''
+    password = ''
 
     server = smtplib.SMTP(smtp_server, smtp_port)
     server.starttls()
@@ -270,7 +273,7 @@ def handle_sendmail(call, phoneUser, nameDoc):
 
     # Создание сообщения
     msg = MIMEMultipart()
-    msg['Subject'] = 'HONOR'
+    msg['Subject'] = 'Compony'
     msg['From'] = username
     msg['To'] = email
 
