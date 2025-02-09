@@ -3,3 +3,4 @@
 *.txt
 database.json
 images/*
+!images/.*
