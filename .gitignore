@@ -2,3 +2,4 @@
 *.xls
 *.txt
 database.json
+images/*
